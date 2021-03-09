@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 
 const Header = (props) => {
     console.log(props);
-    const [zip, setZip] = useState(46214);
+    const [zip, setZip] = useState('46214');
     const [weather, setWeather] = useState([]);
 
     const fetchResults = () => {
