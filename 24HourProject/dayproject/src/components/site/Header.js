@@ -1,34 +1,41 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 const Header = (props) => {
     console.log(props);
-    const [lon, setLon] = useState(-86.148003);
-    const [lat, setLat] = useState(39.791000);
+    const [zip, setZip] = useState(46214);
+    const [weather, setWeather] = useState([]);
 
-    const fetchWeather = () => {
-        let key = props.nasaKey;
-        const url = `https://api.nasa.gov/planetary/earth/imagery?lon=${lon}&lat=${lat}&api_key=${key}`;
+    const fetchResults = () => {
+        const url = `http://api.openweathermap.org/data/2.5/weather?zip=${zip},us&appid=${props.owKey}`;
+        console.log(url);
 
-        fetch(url)
-        .then(res => res.json())
+        fetch(url, {
+            method: 'GET'
+        })
+        .then(res => {
+            res.json();
+            // res.text();
+            console.log(res);
+        })
         .then(json => console.log(json))
-
     }
 
-    const handleSubmit = (e) =>
-    e.preventDefault();
-    fetchWeather();
+    const handleSubmit = e =>{
+        e.preventDefault();
+        fetchResults();
+    }
     
-
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-            <h1>Weather</h1>
-            <span>Enter Longitude: <input type='lon' name='lon' onChange={(e) => setLon(e.target.value)} /></span>
-            <br />
-            <span>Enter Latitude: <input type='lat' name='lat' onChange={(e) => setLat(e.target.value)} /></span>
+            <form onSubmit={(e) => handleSubmit(e)}>
+            <span>Enter USA Zipcode: <input type='zip' name='zip' onChange={(e) => setZip(e.target.value)} /></span>
             <br />
             <button className='submit'>What's the Weather</button>
+            <br />
+            <h1>Weather</h1>
+                {weather ? <h2>{weather.main}</h2> : <div></div>}
+                {weather ? <h2>{weather.description}</h2> : <div></div>}
+                {weather ? <h2>{weather.main}</h2> : <div></div>}
             </form>
         </div>
     )
