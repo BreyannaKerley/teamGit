@@ -3,10 +3,10 @@ import './App.css';
 import Header from './components/site/Header';
 import Card from './components/site/Card';
 import Footer from './components/site/Footer';
+import Home from './components/site/Home';
 
 function App() {
 
-    const nasaKey = 'ihsCPXbr1PJhfBa0E1LxYPm8JTPO47MHYnJIPZoL';
     const owKey = '2c20c5997d2766992b1ad90d53583e5a';
 
   return (
@@ -14,6 +14,7 @@ function App() {
       <header className="App-header">
       <Header owKey={owKey} />
       <Card />
+      <Home />
       <Footer />
       </header>
     </div>
