@@ -6,23 +6,25 @@ const Header = (props) => {
     const [weather, setWeather] = useState([]);
 
     const fetchResults = () => {
-        const url = `http://api.openweathermap.org/data/2.5/weather?zip=${zip},us&appid=${props.owKey}`;
+        const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zip},us&appid=${props.owKey}`;
         console.log(url);
 
-        fetch(url, {
-            method: 'GET'
-        })
+        fetch(url)
         .then(res => {
             res.json();
             // res.text();
-            console.log(res);
+            console.log(res.url);
+            fetch(res.url)
+            .then(res => console.log(res.json()))
+            // .then(json => setWeather(json))
         })
-        .then(json => console.log(json))
+        // console.log(res.json().[1].coord);
     }
 
     const handleSubmit = e =>{
         e.preventDefault();
         fetchResults();
+        
     }
     
     return (

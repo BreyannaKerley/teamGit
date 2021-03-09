@@ -5,6 +5,7 @@ const Home = (props) => {
     const [lon, setLon] = useState('-86.2875');
     const [lat, setLat] = useState('39.7924');
     const [date, setDate] = useState('');
+    const [results, setResults] = useState ({});
 
     const fetch = () => {
 
@@ -22,6 +23,10 @@ const Home = (props) => {
         fetch();
     }
 
+    // useEffect(() => {
+    //     fetch();
+    // }, [handleSubmit])
+
     return (
         <div>
             <form onSubmit={(e) => handleSubmit(e)}>
@@ -29,6 +34,7 @@ const Home = (props) => {
             <br />
             <button className='submit'>Satalite Img</button>
             <br />
+            {results ? <h2>{results.url}</h2> : <div></div>}
             </form>
         </div>
     )
