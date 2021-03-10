@@ -1,13 +1,11 @@
 import React, {useEffect, useState} from 'react';
-<<<<<<< HEAD
-=======
 
->>>>>>> bf84d40ae7e10852768c5a899a06323c5f69709f
+
+
 const Header = (props) => {
     console.log(props);
     const [zip, setZip] = useState('46214');
     const [weather, setWeather] = useState([]);
-<<<<<<< HEAD
     const fetchResults = () => {
         const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zip},us&appid=${props.owKey}`;
         console.log(url);
@@ -26,7 +24,7 @@ const Header = (props) => {
         e.preventDefault();
         fetchResults();
     }
-=======
+
 
     const fetchResults = () => {
         const url = `http://api.openweathermap.org/data/2.5/weather?zip=${zip},us&appid=${props.owKey}`;
@@ -47,8 +45,6 @@ const Header = (props) => {
         e.preventDefault();
         fetchResults();
     }
-    
->>>>>>> bf84d40ae7e10852768c5a899a06323c5f69709f
     return (
         <div>
             <form onSubmit={(e) => handleSubmit(e)}>
