@@ -1,32 +1,33 @@
 import React, {useEffect, useState} from 'react';
 
+
+
 const Header = (props) => {
-    console.log(props);
-    const [zip, setZip] = useState('46214');
-    const [weather, setWeather] = useState([]);
+    // console.log(props);
+    const [zip, setZip] = useState('');
+    const [weather, setWeather] = useState({});
+    const [a, setA] = useState(false);
+
+    // let temp = Math.floor(weather.main.temp - 273.15);
+    // let fTemp = Math.floor(((weather.main.teamp -273.15)*(9/5)+32));
 
     const fetchResults = () => {
         const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zip},us&appid=${props.owKey}`;
         console.log(url);
 
         fetch(url)
-        .then(res => {
-            res.json();
-            // res.text();
-            console.log(res.url);
-            fetch(res.url)
-            .then(res => console.log(res.json()))
-            // .then(json => setWeather(json))
-        })
-        // console.log(res.json().[1].coord);
+        .then(res => res.json())
+        .then(json => setWeather(json))
+        console.log(weather);
+        // console.log(temp);
+        
     }
 
     const handleSubmit = e =>{
         e.preventDefault();
         fetchResults();
-        
+        setA(true);
     }
-    
     return (
         <div>
             <form onSubmit={(e) => handleSubmit(e)}>
@@ -34,13 +35,13 @@ const Header = (props) => {
             <br />
             <button className='submit'>What's the Weather</button>
             <br />
-            <h1>Weather</h1>
-                {weather ? <h2>{weather.main}</h2> : <div></div>}
-                {weather ? <h2>{weather.description}</h2> : <div></div>}
-                {weather ? <h2>{weather.main}</h2> : <div></div>}
             </form>
+                {a === true ? <h2>Weather in: {weather.name}</h2> : <div></div>}
+                {/* {a === true ? <h2>Temperature: {temp}</h2> : <div></div>}
+                {a === true ? <h4>Temperature: {fTemp}</h4> : <div></div>}
+                {a === true ? <h4>Feels Like: {weather.main.feels_like}</h4> : <div></div>}
+                {a === true ? <h4>Temperature: {weather.main.temp}</h4> : <div></div>} */}
         </div>
     )
 }
-
 export default Header;

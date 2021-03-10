@@ -4,7 +4,10 @@ const Footer = () => {
 
     return (
         <div>
-            <h6>Copyright Team 3</h6>
+
+            <p>&copy;Team 3</p>
+
+
         </div>
     )
 }
