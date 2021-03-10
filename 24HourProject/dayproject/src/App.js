@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import Header from './components/site/Header';
 import Card from './components/site/Card';
+import Home from'./components/site/Home';
 import Footer from './components/site/Footer';
 
 function App() {
@@ -15,8 +16,10 @@ function App() {
       <header className="App-header">
       <Header nasaKey={nasaKey} />
       <Card />
+      <Home />
       <Footer />
       </header>
+    
     </div>
   );
 }

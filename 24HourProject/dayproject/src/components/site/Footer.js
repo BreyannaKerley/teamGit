@@ -4,7 +4,7 @@ const Footer = () => {
 
     return (
         <div>
-            <p>Footer with Team copyright</p>
+            <p>&copy;Team 3</p>
         </div>
     )
 }
