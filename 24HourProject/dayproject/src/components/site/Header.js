@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react';
 
+
+
 const Header = (props) => {
     // console.log(props);
     const [zip, setZip] = useState('');
@@ -26,7 +28,6 @@ const Header = (props) => {
         fetchResults();
         setA(true);
     }
-    
     return (
         <div>
             <form onSubmit={(e) => handleSubmit(e)}>
@@ -43,5 +44,4 @@ const Header = (props) => {
         </div>
     )
 }
-
 export default Header;
