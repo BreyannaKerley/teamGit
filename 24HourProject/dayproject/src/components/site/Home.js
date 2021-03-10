@@ -22,9 +22,11 @@ const Home = (props) => {
         e.preventDefault();
         fetchResults();
     }
+
     // useEffect(() => {
     //     fetch();
     // }, [handleSubmit])
+  
     return (
         <div>
             <form onSubmit={(e) => handleSubmit(e)}>
@@ -32,11 +34,9 @@ const Home = (props) => {
             <br />
             <button className='submit'>Satalite Img</button>
             <br />
-
             <br/>
             <br/>
             {results ? <img src={test}  id="img"/> : <div></div>}
-
             </form>
         </div>
     )

@@ -14,6 +14,7 @@ function App() {
     <div className="App">
       <header className="App-header">
       <Header owKey={owKey} />
+      <br />
       <Card />
       <Home />
       <Footer />
