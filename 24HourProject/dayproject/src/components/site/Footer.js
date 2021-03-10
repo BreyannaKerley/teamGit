@@ -5,7 +5,7 @@ const Footer = () => {
     return (
         <div>
 
-            <p>&copy;Team 3</p>
+            <h6>&copy;Team 3</h6>
 
 
         </div>
