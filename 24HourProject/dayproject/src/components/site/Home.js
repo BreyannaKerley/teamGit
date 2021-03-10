@@ -1,32 +1,32 @@
 import React, {useState, useEffect} from 'react';
-
+import "./Home.css";
 const Home = (props) => {
-
     const [lon, setLon] = useState('-86.2875');
     const [lat, setLat] = useState('39.7924');
     const [date, setDate] = useState('');
     const [results, setResults] = useState ({});
-
-    const fetch = () => {
-
-        const nasaKey = 'ihsCPXbr1PJhfBa0E1LxYPm8JTPO47MHYnJIPZoL';
-        const url = `https://api.nasa.gov/planetary/earth/assets?lon=${lon}&lat=${lat}&date=${date}&api_key=${nasaKey}`;
-
-        console.log(url)
+    const nasaKey = 'ihsCPXbr1PJhfBa0E1LxYPm8JTPO47MHYnJIPZoL';
+    let test = results.url
+    const fetchResults = () => {
+       const url = `https://api.nasa.gov/planetary/earth/assets?lon=${lon}&lat=${lat}&date=${date}&api_key=${nasaKey}`;
+        //console.log(url)
+        
         fetch(url)
         .then(res => res.json())
-        .then(json => console.log(json))
-    }
+        .then(json => setResults(json))
+        console.log(results)
 
+
+    }
     const handleSubmit = e => {
         e.preventDefault();
-        fetch();
+        fetchResults();
     }
 
     // useEffect(() => {
     //     fetch();
     // }, [handleSubmit])
-
+  
     return (
         <div>
             <form onSubmit={(e) => handleSubmit(e)}>
@@ -34,10 +34,11 @@ const Home = (props) => {
             <br />
             <button className='submit'>Satalite Img</button>
             <br />
-            {results ? <h2>{results.url}</h2> : <div></div>}
+            <br/>
+            <br/>
+            {results ? <img src={test}  id="img"/> : <div></div>}
             </form>
         </div>
     )
 }
-
 export default Home;

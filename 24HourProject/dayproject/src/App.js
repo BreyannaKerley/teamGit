@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import './App.css';
 import Header from './components/site/Header';
 import Card from './components/site/Card';
+import Home from'./components/site/Home';
 import Footer from './components/site/Footer';
 import Home from './components/site/Home';
 
@@ -18,6 +19,7 @@ function App() {
       <Home />
       <Footer />
       </header>
+    
     </div>
   );
 }
