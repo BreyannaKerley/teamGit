@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import './App.css';
 import Header from './components/site/Header';
-import Card from './components/site/Card';
 import Home from'./components/site/Home';
 import Footer from './components/site/Footer';
 
@@ -12,9 +11,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+      <h1>Weather</h1>
       <Header owKey={owKey} />
       <br />
-      <Card />
       <Home />
       <Footer />
       </header>

@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
-
-
+import WeatherDisplay from './WeatherDisplay';
+import Card from './Card';
 
 const Header = (props) => {
     // console.log(props);
     const [zip, setZip] = useState('');
-    const [weather, setWeather] = useState({});
+    const [weather, setWeather] = useState([]);
     const [a, setA] = useState(false);
 
     // let temp = Math.floor(weather.main.temp - 273.15);
@@ -17,17 +17,20 @@ const Header = (props) => {
 
         fetch(url)
         .then(res => res.json())
-        .then(json => setWeather(json))
+        .then(json => setWeather([json]))
         console.log(weather);
         // console.log(temp);
         
     }
 
     const handleSubmit = e =>{
+        setWeather([]);
+        console.log(weather);
         e.preventDefault();
         fetchResults();
         setA(true);
     }
+
     return (
         <div>
             <form onSubmit={(e) => handleSubmit(e)}>
@@ -36,11 +39,10 @@ const Header = (props) => {
             <button className='submit'>What's the Weather</button>
             <br />
             </form>
-                {a === true ? <h2>Weather in: {weather.name}</h2> : <div></div>}
-                {/* {a === true ? <h2>Temperature: {temp}</h2> : <div></div>}
-                {a === true ? <h4>Temperature: {fTemp}</h4> : <div></div>}
-                {a === true ? <h4>Feels Like: {weather.main.feels_like}</h4> : <div></div>}
-                {a === true ? <h4>Temperature: {weather.main.temp}</h4> : <div></div>} */}
+            <div>
+                {a ? <WeatherDisplay weather={weather} /> : null}
+            </div>
+            <Card />
         </div>
     )
 }

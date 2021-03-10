@@ -36,7 +36,7 @@ const Home = (props) => {
             <br />
             <br/>
             <br/>
-            {results ? <img src={test}  id="img"/> : <div></div>}
+            {results ? <img src={test} id="img"/> : <div></div>}
             </form>
         </div>
     )
